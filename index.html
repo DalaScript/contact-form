@@ -1,42 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
   <title>Contact form | Frontend Mentor</title>
-
+  <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
+
 <body>
+  <main>
 
-  Contact Us
 
-  First Name
-  This field is required
+    <form action="" class="contact-form">
+      <div class="contact-form__form-content">
+        <p class="contact-form__title">
+          Contact Us
+        </p>
+        <div class="contact-form__form-group">
+          <label for="first-name" class="contact-form__form-title">
+            First Name
+          </label>
+          <input type="text" name="first-name" id="first-name" class="contact-form__form-input" required>
+          <span id="contact-form__first-name-err" class="contact-form__error-message">This field is required</span>
+        </div>
+        <div class="contact-form__form-group">
+          <label for="last-name" class="contact-form__form-title">
+            Last Name
+          </label>
+          <input type="text" name="last-name" id="last-name" class="contact-form__form-input" required>
+          <span id="contact-form__last-name-err" class="contact-form__error-message">This field is required</span>
+        </div>
+        <div class="contact-form__form-group">
+          <label for="email-address" class="contact-form__form-title">
+            Email Address
+          </label>
+          <input type="text" name="email-address" id="email-address" class="contact-form__form-input" required>
+          <span id="contact-form__last-name-err" class="contact-form__error-message">Please enter a valid email
+            address</span>
+        </div>
+        <fieldset class="contact-form__form-group contact-form__contact-method">
+          <legend class="contact-form__form-title contact-form__contact-title">Query Type</legend>
+          <label for="general-enquiry" class="contact-form__radio-btn-label">
+            <input class="contact-form__radio-btn" type="radio" id="general-enquiry" name="query-type">
+            <span class="contact-form__custom-radio-btn"></span>
+            General Enquiry
+          </label>
+          
+          <label for="support-request" class="contact-form__radio-btn-label">
+            <input class="contact-form__radio-btn" type="radio" id="support-request" name="query-type">
+            <span class="contact-form__custom-radio-btn"></span>
+            Support Request
+          </label>
+          <span id="contact-form__last-name-err" class="contact-form__error-message">Please select a query type</span>
+        </fieldset>
+        <div class="contact-form__form-group">
+          <label for="message" class="contact-form__form-title">
+            Message
+          </label>
+          <textarea name="message" class="contact-form__form-input contact-form__form-input--message" id="message" required></textarea>
+          <span id="contact-form__last-name-err" class="contact-form__error-message">This field is required</span>
+        </div>
+      </div>
 
-  Last Name
-  This field is required
+      <div class="contact-form__form-group contact-form__form-group--user-consent">
+        <input type="checkbox" class="contact-form__consent-input " id="user-consent" name="user-consent">
+        <label for="user-consent" class="contact-form__consent-label">I consent to being contacted by the team</label>
+        <span id="contact-form__last-name-err" class="contact-form__error-message">
+          To submit this form, please consent to being contacted
+        </span>
+      </div>
+      <input class="contact-form__submit-btn" type="submit">
+    </form>
 
-  Email Address
-  Please enter a valid email address
-  This field is required
-
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
-
-  Message
-  This field is required
-
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
-
+    <div class="success-state">
+      <p class="success-state__title">Message Sent!</p>
+      <p class="success-state__subtitle">Thanks for completing the form. We'll be in touch soon!</p>
+    </div>
+  </main>
+  <script src="./assets/script/script.js"></script>
 </body>
 </html>
