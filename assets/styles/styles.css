@@ -44,27 +44,19 @@ legend {
   font-weight: normal;
 }
 
-.contact-form__error-message {
-  display: none;
-  font-family: "Karla";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  color: #D73C3C;
-}
-
 /* Body Variables
  ******************************/
 main {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .contact-form {
   margin: 32px 16px;
   padding: 24px;
   max-width: 343px;
+  width: 100%;
   border-radius: 16px;
   background-color: #ffffff;
   display: flex;
@@ -86,15 +78,20 @@ main {
   letter-spacing: -1px;
   color: #2A4144;
 }
+.contact-form__group-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 .contact-form__form-group {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.contact-form__form-group--user-consent {
-  flex-direction: row;
-  align-items: center;
-  gap: 19px;
+.contact-form__form-group--radio-btns {
+  gap: 16px;
 }
 .contact-form__form-title {
   font-family: "Karla";
@@ -105,19 +102,29 @@ main {
   color: #2A4144;
 }
 .contact-form__form-input {
-  width: 295px;
+  padding: 12px 24px;
+  width: 100%;
   height: 51px;
   background-color: #ffffff;
   border: 1px solid #86A2A5;
   border-radius: 8px;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #2A4144;
 }
 .contact-form__form-input--message {
-  width: 295px;
   height: 240px;
-  border: 1px solid #86A2A5;
-  border-radius: 8px;
+}
+.contact-form__form-input:focus {
+  outline: none;
+  border: 1px solid #0C7D69;
 }
 .contact-form__contact-method {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 .contact-form__contact-title {
@@ -125,7 +132,7 @@ main {
 }
 .contact-form__radio-btn-label {
   padding: 11px 27px;
-  width: 295px;
+  width: 100%;
   height: 51px;
   border: 1px solid #86A2A5;
   border-radius: 8px;
@@ -134,6 +141,7 @@ main {
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  position: relative;
   font-family: "Karla";
   font-style: normal;
   font-weight: 400;
@@ -146,36 +154,68 @@ main {
   background-color: #E0F1E8;
 }
 .contact-form__radio-btn {
-  display: none;
-}
-.contact-form__custom-radio-btn {
+  appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #86A2A5;
   border-radius: 50%;
+  border: 1.5px solid #86A2A5;
+  flex-shrink: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
-.contact-form__radio-btn:checked + .contact-form__custom-radio-btn::after {
+.contact-form__radio-btn:checked {
+  border: 1.5px solid #0C7D69;
+}
+.contact-form__radio-btn:checked::after {
   content: "";
-  width: 20px;
-  height: 20px;
-  background-image: url("../images/icon-radio-selected.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.contact-form__radio-btn:checked + .contact-form__custom-radio-btn {
-  border: none;
+  width: 10.5px;
+  height: 10.5px;
+  border-radius: 50%;
+  background-color: #0C7D69;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
 }
 .contact-form__consent-label {
-  max-inline-size: 232px;
+  padding: 0 23px 0 3px;
+  display: flex;
+  align-items: center;
+  gap: 19px;
   font-family: "Karla";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   color: #2A4144;
+}
+.contact-form__consent-input {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #86A2A5;
+  border-radius: 2px;
+  flex-shrink: 0;
+  display: block;
+  position: relative;
+  appearance: none;
+}
+.contact-form__consent-input:checked {
+  border: none;
+}
+.contact-form__consent-input:checked::after {
+  content: url("../images/icon-checkbox-check.svg");
+}
+.contact-form__error-message {
+  display: none;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #D73C3C;
+}
+.contact-form__error-message--active {
+  display: block;
 }
 .contact-form__submit-btn {
   padding: 16px 0;
@@ -189,28 +229,83 @@ main {
   line-height: 150%;
   color: #ffffff;
 }
-.contact-form__consent-input {
-  margin-left: 3px;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #86A2A5;
-  border-radius: 2px;
-  appearance: none;
-  display: flex;
-  position: relative;
-}
-.contact-form__consent-input--checked::after {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background-image: url("../images/icon-checkbox-check.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: -2px;
-  top: -2px;
-}
 
 .success-state {
-  display: none;
+  padding: 24px;
+  width: 100%;
+  max-width: 327px;
+  background: #2A4144;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translate(-50%, -100px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+.success-state--active {
+  visibility: visible;
+  display: flex;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.success-state__title {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.success-state__subtitle {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #E0F1E8;
+}
+
+@media only screen and (min-width: 768px) {
+  .contact-form {
+    margin: 128px 0;
+    padding: 40px;
+    max-width: 690px;
+  }
+  .contact-form__group-container {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .contact-form__form-group--radio-btns {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .contact-form__form-input--message {
+    height: 132px;
+  }
+
+  .success-state {
+    max-width: 450px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .contact-form {
+    max-width: 736px;
+  }
+  .contact-form__form-input--message {
+    height: 105px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .contact-form__form-input, .contact-form__radio-btn-label, .contact-form__consent-label, .contact-form__submit-btn {
+    cursor: pointer;
+  }
 }

@@ -2,84 +2,100 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
-  <title>Contact form | Frontend Mentor</title>
-  <link rel="stylesheet" href="./assets/styles/styles.css">
+    <title>Contact form | Frontend Mentor</title>
+    <link rel="stylesheet" href="./assets/styles/styles.css">
 </head>
 
 <body>
-  <main>
+    <main>
+        <form action="" class="contact-form">
+            <div class="contact-form__form-content">
+                <p class="contact-form__title">
+                    Contact Us
+                </p>
+                <div class="contact-form__group-container">
+                    <div class="contact-form__form-group">
+                        <label for="first-name" class="contact-form__form-title">
+                            First Name
+                        </label>
+                        <input type="text" class="contact-form__form-input contact-form__required-input" id="first-name"
+                            name="first-name" required />
+                        <span class="contact-form__error-message contact-form__error-message--first-name">This field is
+                            required</span>
+                    </div>
+                    <div class="contact-form__form-group">
+                        <label for="last-name" class="contact-form__form-title">
+                            Last Name
+                        </label>
+                        <input type="text" class="contact-form__form-input contact-form__required-input" id="last-name"
+                            name="last-name" required />
+                        <span class="contact-form__error-message contact-form__error-message--last-name">This field is
+                            required</span>
+                    </div>
+                </div>
+                <div class="contact-form__form-group">
+                    <label for="email-address" class="contact-form__form-title">
+                        Email Address
+                    </label>
+                    <input type="email" class="contact-form__form-input contact-form__required-input" id="email-address"
+                        name="email-address" required />
+                    <span class="contact-form__error-message contact-form__error-message--email-address">Please enter a
+                        valid email address</span>
+                </div>
+                <fieldset class="contact-form__contact-method">
+                    <legend class="contact-form__form-title contact-form__contact-title">Query Type</legend>
+                    <div class="contact-form__form-group contact-form__form-group--radio-btns">
+                        <label for="general-enquiry" class="contact-form__radio-btn-label">
+                            <input class="contact-form__radio-btn contact-form__required-input" type="radio"
+                                id="general-enquiry" name="query-type" required />
+                            General Enquiry
+                        </label>
+                        <label for="support-request" class="contact-form__radio-btn-label">
+                            <input class="contact-form__radio-btn contact-form__required-input" type="radio"
+                                id="support-request" name="query-type" required />
+                            Support Request
+                        </label>
+                    </div>
+                    <span class="contact-form__error-message contact-form__error-message--query-type">Please select a
+                        query type</span>
+                </fieldset>
+                <div class="contact-form__form-group">
+                    <label for="message" class="contact-form__form-title">
+                        Message
+                    </label>
+                    <textarea
+                        class="contact-form__form-input contact-form__form-input--message contact-form__required-input"
+                        name="message" id="message" required></textarea>
+                    <span class="contact-form__error-message contact-form__error-message--message">This field is
+                        required</span>
+                </div>
+            </div>
+            <div class="contact-form__form-group contact-form__form-group--user-consent">
+                <label for="user-consent" class="contact-form__consent-label">
+                    <input type="checkbox" class="contact-form__consent-input contact-form__required-input"
+                        id="user-consent" name="user-consent" required />
+                    I consent to being contacted by the team
+                </label>
+                <span class="contact-form__error-message contact-form__error-message--user-consent">
+                    To submit this form, please consent to being contacted
+                </span>
+            </div>
+            <input type="submit" class="contact-form__submit-btn" id="contact-form__submit-btn">
+        </form>
+    </main>
 
-
-    <form action="" class="contact-form">
-      <div class="contact-form__form-content">
-        <p class="contact-form__title">
-          Contact Us
+    <div class="success-state" id="success-state">
+        <p class="success-state__title">
+          <img src="./assets/images/icon-success-check.svg" class="success-state__icon" width="20" alt="success icon"> Message Sent!
         </p>
-        <div class="contact-form__form-group">
-          <label for="first-name" class="contact-form__form-title">
-            First Name
-          </label>
-          <input type="text" name="first-name" id="first-name" class="contact-form__form-input" required>
-          <span id="contact-form__first-name-err" class="contact-form__error-message">This field is required</span>
-        </div>
-        <div class="contact-form__form-group">
-          <label for="last-name" class="contact-form__form-title">
-            Last Name
-          </label>
-          <input type="text" name="last-name" id="last-name" class="contact-form__form-input" required>
-          <span id="contact-form__last-name-err" class="contact-form__error-message">This field is required</span>
-        </div>
-        <div class="contact-form__form-group">
-          <label for="email-address" class="contact-form__form-title">
-            Email Address
-          </label>
-          <input type="text" name="email-address" id="email-address" class="contact-form__form-input" required>
-          <span id="contact-form__last-name-err" class="contact-form__error-message">Please enter a valid email
-            address</span>
-        </div>
-        <fieldset class="contact-form__form-group contact-form__contact-method">
-          <legend class="contact-form__form-title contact-form__contact-title">Query Type</legend>
-          <label for="general-enquiry" class="contact-form__radio-btn-label">
-            <input class="contact-form__radio-btn" type="radio" id="general-enquiry" name="query-type">
-            <span class="contact-form__custom-radio-btn"></span>
-            General Enquiry
-          </label>
-          
-          <label for="support-request" class="contact-form__radio-btn-label">
-            <input class="contact-form__radio-btn" type="radio" id="support-request" name="query-type">
-            <span class="contact-form__custom-radio-btn"></span>
-            Support Request
-          </label>
-          <span id="contact-form__last-name-err" class="contact-form__error-message">Please select a query type</span>
-        </fieldset>
-        <div class="contact-form__form-group">
-          <label for="message" class="contact-form__form-title">
-            Message
-          </label>
-          <textarea name="message" class="contact-form__form-input contact-form__form-input--message" id="message" required></textarea>
-          <span id="contact-form__last-name-err" class="contact-form__error-message">This field is required</span>
-        </div>
-      </div>
-
-      <div class="contact-form__form-group contact-form__form-group--user-consent">
-        <input type="checkbox" class="contact-form__consent-input " id="user-consent" name="user-consent">
-        <label for="user-consent" class="contact-form__consent-label">I consent to being contacted by the team</label>
-        <span id="contact-form__last-name-err" class="contact-form__error-message">
-          To submit this form, please consent to being contacted
-        </span>
-      </div>
-      <input class="contact-form__submit-btn" type="submit">
-    </form>
-
-    <div class="success-state">
-      <p class="success-state__title">Message Sent!</p>
-      <p class="success-state__subtitle">Thanks for completing the form. We'll be in touch soon!</p>
+        <p class="success-state__subtitle">Thanks for completing the form. We'll be in touch soon!</p>
     </div>
-  </main>
-  <script src="./assets/script/script.js"></script>
+
+<script src="./assets/script/main.js"></script>
 </body>
+
 </html>
